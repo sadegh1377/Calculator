@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div id="Calculator">
         <div class="calculator" :class="{white : isDark}">
             <div class="header" :class="{white : isDark}">
                 <div class="menu" :class="{white : isDark}">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="dark_and_light" :class="{whiteButton : isDark}">
                     <button type="button" class="button" @click="changeColor" :class="{whiteButton : isDark}">
-                        <i class="fa fa-moon-o"></i>
+                        <i class="fa fa-moon"></i>
                     </button>
                 </div>
             </div>
@@ -170,12 +170,13 @@
         methods: {
 
             getInputNum(num) {
+                if (this.inputNum.charAt(0) === "0") {
+                    this.inputNum = ""
+                }
                 if (this.inputNum.length < 9) {
-                    if (this.inputNum.charAt(0) === "0") {
-                        this.inputNum = ""
-                    }
                     this.inputNum += num;
                 } else {
+
                 }
             },
 
@@ -214,7 +215,7 @@
     }
 
     .whiteButton:focus {
-        outline: none;
+        outline: none !important;
         background-color: orangered !important;
         color: white;
     }
