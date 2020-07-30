@@ -20,10 +20,21 @@
             </div>
             <div class="monitor">
                 <div class="box">
-                    <input type="number" class="screen" :class="{white : isDark}"
-                           v-model="inputNum"
-                           placeholder="0"
-                           :disabled="isDisable"/>
+                    <div class="screen" :class="{white : isDark}">
+                        <br>
+                        <br>
+                        <br>
+                        <!--                        <span>{{inputNum}}</span>-->
+                        <input type="text" v-model="inputNum" :class="{white : isDark}">
+                        <br>
+                        <br>
+                        <br>
+                        <span>answer is: {{answer}}</span>
+                    </div>
+                    <!--                    <input type="text" class="screen" :class="{white : isDark}"-->
+                    <!--                           v-model="inputNum"-->
+                    <!--                           placeholder="0"-->
+                    <!--                           :disabled="isDisable"/>-->
                 </div>
             </div>
             <div class="buttons">
@@ -43,12 +54,14 @@
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="button prime-button" value="%" :class="{whiteButton : isDark}">
-                                %
+                            <button type="button" class="button prime-button" value="%" :class="{whiteButton : isDark}"
+                                    @click="square()">
+                                √
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="button prime-button" value="/" :class="{whiteButton : isDark}">
+                            <button type="button" class="button prime-button" value="/" :class="{whiteButton : isDark}"
+                                    @click="getOperate('/')">
                                 /
                             </button>
                         </td>
@@ -56,21 +69,22 @@
                     <tr>
                         <td>
                             <button type="button" class="button" value="7" :class="{whiteButton : isDark}"
-                                    @click="getInputNum(7)">7
+                                    @click="getOperate(7)">7
                             </button>
                         </td>
                         <td>
                             <button type="button" class="button" value="8" :class="{whiteButton : isDark}"
-                                    @click="getInputNum(8)">8
+                                    @click="getOperate(8)">8
                             </button>
                         </td>
                         <td>
                             <button type="button" class="button" value="9" :class="{whiteButton : isDark}"
-                                    @click="getInputNum(9)">9
+                                    @click="getOperate(9)">9
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="button prime-button" value="*" :class="{whiteButton : isDark}">
+                            <button type="button" class="button prime-button" value="*" :class="{whiteButton : isDark}"
+                                    @click="getOperate('*')">
                                 x
                             </button>
                         </td>
@@ -78,21 +92,22 @@
                     <tr>
                         <td>
                             <button type="button" class="button" value="4" :class="{whiteButton : isDark}"
-                                    @click="getInputNum(4)">4
+                                    @click="getOperate(4)">4
                             </button>
                         </td>
                         <td>
                             <button type="button" class="button" value="5" :class="{whiteButton : isDark}"
-                                    @click="getInputNum(5)">5
+                                    @click="getOperate(5)">5
                             </button>
                         </td>
                         <td>
                             <button type="button" class="button" value="6" :class="{whiteButton : isDark}"
-                                    @click="getInputNum(6)">6
+                                    @click="getOperate(6)">6
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="button prime-button" value="-" :class="{whiteButton : isDark}">
+                            <button type="button" class="button prime-button" value="-" :class="{whiteButton : isDark}"
+                                    @click="getOperate('-')">
                                 -
                             </button>
                         </td>
@@ -100,21 +115,22 @@
                     <tr>
                         <td>
                             <button type="button" class="button" value="1" :class="{whiteButton : isDark}"
-                                    @click="getInputNum(1)">1
+                                    @click="getOperate(1)">1
                             </button>
                         </td>
                         <td>
                             <button type="button" class="button" value="2" :class="{whiteButton : isDark}"
-                                    @click="getInputNum(2)">2
+                                    @click="getOperate(2)">2
                             </button>
                         </td>
                         <td>
                             <button type="button" class="button" value="3" :class="{whiteButton : isDark}"
-                                    @click="getInputNum(3)">3
+                                    @click="getOperate(3)">3
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="button prime-button" value="+" :class="{whiteButton : isDark}">
+                            <button type="button" class="button prime-button" value="+" :class="{whiteButton : isDark}"
+                                    @click="getOperate('+')">
                                 +
                             </button>
                         </td>
@@ -122,7 +138,7 @@
                     <tr>
                         <td>
                             <button type="button" class="button" value="00" :class="{whiteButton : isDark}"
-                                    @click="getInputNum('00')">00
+                                    @click="getOperate('00')">00
                             </button>
                         </td>
                         <td>
@@ -130,17 +146,18 @@
                                     class="button"
                                     value="0"
                                     :class="{whiteButton : isDark}"
-                                    @click="getInputNum(0)"
+                                    @click="getOperate(0)"
                             >0
                             </button>
                         </td>
                         <td>
                             <button type="button" class="button" value="." :class="{whiteButton : isDark}"
-                                    @click="getInputNum('.')">.
+                                    @click="getOperate('.')">.
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="button prime-button" value="=" :class="{whiteButton : isDark}">
+                            <button type="button" class="button prime-button" value="=" :class="{whiteButton : isDark}"
+                                    @click="equal">
                                 =
                             </button>
                         </td>
@@ -148,7 +165,6 @@
                 </table>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -160,24 +176,31 @@
                 isDark: false,
                 isDisable: false,
                 inputNum: "",
+                answer: ""
             }
         },
-        watch: {
-            inputNum() {
-                this.isDisable = this.inputNum.length >= 9;
-            }
-        },
+        // watch: {
+        //     inputNum() {
+        //         this.isDisable = this.inputNum.length >= 9;
+        //     }
+        // },
         methods: {
-
-            getInputNum(num) {
+            getOperate(element) {
                 if (this.inputNum.charAt(0) === "0") {
                     this.inputNum = ""
                 }
-                if (this.inputNum.length < 9) {
-                    this.inputNum += num;
-                } else {
-
-                }
+                // if (this.inputNum.length < 9) {
+                this.inputNum += element;
+                console.log(this.inputNum)
+                // } else {}
+            },
+            square() {
+                eval(this.inputNum) < 0 ? this.answer = "Can not suqre the negative value"
+                    : this.answer = Math.sqrt(eval(this.inputNum));
+            }
+            ,
+            equal() {
+                this.answer = eval(this.inputNum);
             },
 
             changeColor() {
@@ -186,12 +209,13 @@
 
             deleteAll() {
                 this.inputNum = "";
-                this.isDisable = false
+                this.answer = "";
+                // this.isDisable = false
             },
 
             deleteJustOne() {
                 this.inputNum = this.inputNum.slice(0, -1);
-            }
+            },
         }
     }
 </script>
@@ -232,7 +256,11 @@
     }
 
     /* Firefox */
-    input[type=number] {
+    input[type=text] {
+        width: 99%;
+        color: white;
+        border: none;
+        background-color: #0a0a0a;
         -moz-appearance: textfield;
     }
 
