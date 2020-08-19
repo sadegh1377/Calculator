@@ -1,5 +1,5 @@
 <template>
-    <div class="home container">
+    <div class="home">
         <calculator/>
     </div>
 </template>
@@ -14,3 +14,6 @@
         }
     }
 </script>
+
+<style scoped>
+</style>

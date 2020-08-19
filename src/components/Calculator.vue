@@ -1,6 +1,6 @@
 <template>
-    <div id="Calculator">
-        <div class="calculator" :class="{white : isDark}">
+    <div id="Calculator" class="mt-5 card">
+        <div class="calculator align-self-center" :class="{white : isDark}">
             <div class="header" :class="{white : isDark}">
                 <div class="menu" :class="{white : isDark}">
                     <button type="button" class="button" :class="{whiteButton : isDark}">
@@ -20,16 +20,16 @@
             </div>
             <div class="monitor">
                 <div class="box">
-                    <div class="screen" :class="{white : isDark}">
+                    <div class="screen" :class="{whiteScreen : isDark}">
                         <br>
                         <br>
                         <br>
                         <!--                        <span>{{inputNum}}</span>-->
-                        <input type="text" v-model="inputNum" :class="{white : isDark}">
+                        <input type="text" v-model="inputNum" :class="{whiteInput : isDark}">
                         <br>
                         <br>
                         <br>
-                        <span>answer is: {{answer}}</span>
+                        <span :class="{whiteInput : isDark}">answer is: {{answer}}</span>
                     </div>
                     <!--                    <input type="text" class="screen" :class="{white : isDark}"-->
                     <!--                           v-model="inputNum"-->
@@ -223,8 +223,23 @@
 <style scoped>
 
     .white {
-        background-color: white !important;
+        background-color: #f7f7f7 !important;
         color: black !important;
+    }
+
+    .whiteScreen {
+        font-weight: bold;
+        border: 0px;
+        padding: 0px;
+        background-color: white !important;
+        width: 100%;
+        height: 100%;
+        color: white;
+    }
+
+    .whiteInput {
+        background-color: white !important;
+        color: #0a0a0a !important;
     }
 
     .whiteButton {
