@@ -1,19 +1,22 @@
 <template>
-    <div class="home">
-        <calculator/>
-    </div>
+  <div class="home">
+    <calculator/>
+  </div>
 </template>
 
 <script>
-    import Calculator from "../components/Calculator";
+import Calculator from "../components/Calculator";
 
-    export default {
-        name: 'Home',
-        components: {
-            Calculator,
-        }
-    }
+export default {
+  name: 'Home',
+  components: {
+    Calculator,
+  }
+}
 </script>
 
 <style scoped>
+.home {
+  height: 100vh;
+}
 </style>
