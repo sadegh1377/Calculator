@@ -21,3 +21,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Project images
 
 ![alt text](https://github.com/sadegh1377/Calculator/blob/master/screenshots/dark.png)
+
+![alt text](https://github.com/sadegh1377/Calculator/blob/master/screenshots/light.png)
+
+![alt text](https://github.com/sadegh1377/Calculator/blob/master/screenshots/20211201_162506.gif)
